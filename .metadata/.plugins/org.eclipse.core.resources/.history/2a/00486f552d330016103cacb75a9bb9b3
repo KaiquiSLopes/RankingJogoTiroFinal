@@ -1,0 +1,72 @@
+package br.com.ranking.jogo;
+
+import java.util.HashMap;
+
+/**
+ * Classe que representa uma partida!
+ *
+ *
+ * @author Kaiqui Lopes <kaiquilopes@gmail.com.br>
+ * @since 15 de jun de 2016 15:36:30
+ * @version 1.0
+ */
+public class Partida{
+	HashMap< String, Integer > matou = new HashMap< String, Integer >();
+	HashMap< String, Integer > morreu = new HashMap< String, Integer >();
+
+
+	//	Pega quem matou e quantas vezes matou
+	public void quemMatou( String nomeDeQuemFez ) {
+		if ( matou.containsKey( nomeDeQuemFez ) ) {
+			Integer totalDeMatadas = matou.get( nomeDeQuemFez );
+			matou.replace( nomeDeQuemFez, ++totalDeMatadas );
+		} else {
+			matou.put( nomeDeQuemFez, 1 );
+		}
+	}
+
+	//	Pega quem morreu e quantas vezes morreu
+	public void quemMorreu( String vitima ) {
+		if ( morreu.containsKey( vitima ) ) {
+			Integer totalDeMorridas = morreu.get( vitima );
+			morreu.replace( vitima, ++totalDeMorridas );
+		} else {
+			morreu.put( vitima, 1 );
+		}
+	}
+
+	//	Exibe quem e quantas vezes alguem morreu
+	public void exibeQuantasVezesMorreu() {
+		for ( String quemMorreuCorrente : morreu.keySet() ) {
+			if ( morreu.get( quemMorreuCorrente ) == 1 ) {
+				System.out.println( quemMorreuCorrente + " Morreu " + morreu.get( quemMorreuCorrente ) + " vez" );
+			} else {
+				System.out.println( quemMorreuCorrente + " Morreu " + morreu.get( quemMorreuCorrente ) + " vezes" );
+			}
+		}
+	}
+
+	//	Exibe quantas vezes alguem matou
+	public void exibeQuantasVezesMatou() {
+		for ( String quemMatouCorrente : matou.keySet() ) {
+			if ( matou.get( quemMatouCorrente ) == 1 ) {
+				System.out.println( quemMatouCorrente + " Matou: " + matou.get( quemMatouCorrente ) + " vez" );
+			} else {
+				System.out.println( quemMatouCorrente + " Matou: " + matou.get( quemMatouCorrente ) + " vezes" );
+			}
+		}
+	}
+	
+	public void verificarInicioETerminoDeJogo(String linhaDadoCorrente){
+		if(linhaDadoCorrente.contains( "New" )){
+			System.out.println( "----------- Inicio do Jogo -----------" );
+		}else if(linhaDadoCorrente.contains( "ended" )){
+			exibeQuantasVezesMatou();
+			System.out.println( "\n" );
+			exibeQuantasVezesMorreu();
+			System.out.println( "----------- Termino do Jogo -----------" );
+		}
+	}
+	
+
+}

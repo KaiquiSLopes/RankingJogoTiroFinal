@@ -1,0 +1,39 @@
+package br.com.ranking.jogo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.junit.Test;
+
+public class Principal{
+	
+	@Test
+	public void executar() {
+		ControladorPartida controladorPartida = new ControladorPartida();
+		Ranking ranking = new Ranking();
+		
+
+		try {
+			//		pegar uma partida para cada new que eu achar no doc
+			ArrayList< Partida > partidas = controladorPartida.carregarDadosPartida( "D:/Desenvolvimento/PROJETOS KAIQUI SWING/workspace/RankingJogoTiroFinal/Arquivo.txt" );
+
+			for ( Partida partida : partidas ) {
+				System.out.println( partida );
+				
+				
+				HashMap< String, Integer > mapAssassinatos = ranking.quantidadeAssassinatosJogador(partida);
+				for ( String jogadorCorrente : mapAssassinatos.keySet() ) {
+					System.out.println( jogadorCorrente + " " + mapAssassinatos.get( jogadorCorrente ) );
+				}
+				
+//				ranking.quantidadeMortesJogador(partida);
+			}
+
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+
+	}
+
+
+}

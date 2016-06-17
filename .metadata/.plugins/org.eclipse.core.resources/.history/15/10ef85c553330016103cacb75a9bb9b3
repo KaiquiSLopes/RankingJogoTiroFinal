@@ -1,0 +1,76 @@
+package br.com.ranking.util;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import br.com.ranking.jogo.Jogador;
+import br.com.ranking.jogo.Partida;
+
+/**
+ * Classe que le um arquivo com as instruções do jogo
+ * E quebras as linhas e as palavras do arquivo.
+ *
+ * @author Kaiqui Lopes <kaiquilopes@gmail.com.br>
+ * @since 14 de jun de 2016 13:48:59
+ * @version 1.0
+ */
+public class Arquivo{
+	File file = new File("D:/Desenvolvimento/PROJETOS KAIQUI SWING/workspace/RankingJogoTiroFinal/Arquivo.txt");
+	ArrayList< String > linhas = new ArrayList<>();
+//	private final int INDICE_DATA = 0;
+	
+
+	
+	
+	// Metodo que le o arquivo.txt
+	public List< String > lerArquivoTxt() throws IOException{
+		String linha = null;
+		if(file.exists()){
+			FileReader fileReader = new FileReader(file);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			while(bufferedReader.ready()){
+				linha = bufferedReader.readLine();
+				linhas.add( linha );
+			}
+			fileReader.close();
+			bufferedReader.close();
+		}else{
+			JOptionPane.showMessageDialog(null, "Arquivo nao encontrado");
+		}
+		return linhas;
+	}
+	
+
+	
+//	Metodo que quebra as palavras de cada linha
+	public void quebrarPalavrasDasLinhas(String[] linhaQuebrada) {
+		Jogador jogador = new Jogador();
+		String[] palavrasPorLinha = linhaQuebrada[INDICE_DADOS].split( " " );
+		
+		nomeDeQuemFez = palavrasPorLinha[0];
+		acao = palavrasPorLinha[1];
+		vitima = palavrasPorLinha[2];
+//		String usingOrBy = palavrasPorLinha[3];
+//		String armaOrCaussa = palavrasPorLinha[4];
+		
+		/** IF PARA VER SE HÁ MORTES */
+		if(acao.equals( "killed" )){
+			/** NAO SOMAR QUANTAS PESSOAS WORLD MATOU */
+			if(!nomeDeQuemFez.equals( "<WORLD>" )){
+				jogador.quemMatou( nomeDeQuemFez );
+				jogador.quemMorreu( vitima );
+			}
+		}
+		
+	}
+
+	public String getNomeDeQuemFez() {
+		return nomeDeQuemFez;
+	}
+}

@@ -1,0 +1,56 @@
+package br.com.ranking.jogo;
+
+import java.util.HashMap;
+
+/**
+ * Classe que representa uma partida!
+ *
+ *
+ * @author Kaiqui Lopes <kaiquilopes@gmail.com.br>
+ * @since 15 de jun de 2016 15:36:30
+ * @version 1.0
+ */
+public class Partida{
+	static HashMap< String, Integer > matou = new HashMap< String, Integer >();
+	static HashMap< String, Integer > morreu = new HashMap< String, Integer >();
+	
+
+	//	Exibe quem e quantas vezes alguem morreu
+	public void exibeQuantasVezesMorreu() {
+		for ( String quemMorreuCorrente : morreu.keySet() ) {
+			if ( morreu.get( quemMorreuCorrente ) == 1 ) {
+				System.out.println( quemMorreuCorrente + " Morreu " + morreu.get( quemMorreuCorrente ) + " vez" );
+			} else {
+				System.out.println( quemMorreuCorrente + " Morreu " + morreu.get( quemMorreuCorrente ) + " vezes" );
+			}
+		}
+		
+		morreu.clear();
+	}
+
+
+	//	Exibe quantas vezes alguem matou
+	public void exibeQuantasVezesMatou() {
+		for ( String quemMatouCorrente : matou.keySet() ) {
+			if ( matou.get( quemMatouCorrente ) == 1 ) {
+				System.out.println( quemMatouCorrente + " Matou: " + matou.get( quemMatouCorrente ) + " vez" );
+			} else {
+				System.out.println( quemMatouCorrente + " Matou: " + matou.get( quemMatouCorrente ) + " vezes" );
+			}
+		}
+		matou.clear();
+	}
+	
+	public void verificarInicioETerminoDeJogo(String linhaDadoCorrente){
+		if(linhaDadoCorrente.contains( "New" )){
+			System.out.println( "----------- Inicio do Jogo -----------" );
+		}else if(linhaDadoCorrente.contains( "ended" )){
+			exibeQuantasVezesMatou();
+			System.out.println( "" );
+			exibeQuantasVezesMorreu();
+			System.out.println( "----------- Termino do Jogo -----------" );
+		}
+	}
+	
+
+}

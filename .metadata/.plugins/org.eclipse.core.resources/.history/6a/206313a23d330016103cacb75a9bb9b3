@@ -1,0 +1,56 @@
+package br.com.ranking.jogo;
+
+import java.util.HashMap;
+
+import br.com.ranking.util.Arquivo;
+
+/**
+ * Classe que representa um Jogador
+ *
+ *
+ * @author Kaiqui Lopes <kaiquilopes@gmail.com.br>
+ * @since 15 de jun de 2016 16:36:29
+ * @version 1.0
+ */
+public class Jogador{
+	
+	private String premio = "10 pontos";
+	static HashMap< String, Integer > continuouVivo = new HashMap< String, Integer >();
+	
+	//	Pega quem matou e quantas vezes matou
+	public void quemMatou( String nomeDeQuemFez ) {
+		if ( Partida.matou.containsKey( nomeDeQuemFez ) ) {
+			Integer totalDeMatadas = Partida.matou.get( nomeDeQuemFez );
+			Partida.matou.replace( nomeDeQuemFez, ++totalDeMatadas );
+		} else {
+			Partida.matou.put( nomeDeQuemFez, 1 );
+		}
+	}
+
+	//	Pega quem morreu e quantas vezes morreu
+	public void quemMorreu( String vitima ) {
+		if ( Partida.morreu.containsKey( vitima ) ) {
+			Integer totalDeMorridas = Partida.morreu.get( vitima );
+			Partida.morreu.replace( vitima, ++totalDeMorridas );
+		} else {
+			Partida.morreu.put( vitima, 1 );
+		}
+		
+	}
+	
+	public void verificarQuemNaoMorreu(String nomeDeQuemFez){
+		if ( Partida.morreu.get( nomeDeQuemFez ) == null ){
+			if(!continuouVivo.containsKey( nomeDeQuemFez )){
+				continuouVivo.get( nomeDeQuemFez );
+			}else{
+				continuouVivo.replace( nomeDeQuemFez, 1 );
+			}
+		}
+		System.out.println( nomeDeQuemFez + " não morreu nessa partida" );
+		continuouVivo.clear();
+	}
+
+	public String getPremio() {
+		return premio;
+	}
+}

@@ -1,0 +1,15 @@
+1466016910987	Rename type 'LeArquivo'
+1466018826619	Delete element
+1466032056387	Copy compilation unit
+1466032313921	Move compilation unit
+1466034703392	Extract method 'verificaSeTemMortes'
+1466112690860	Rename field 'jogador'
+1466114946112	Rename local variable 'eventosPartida'
+1466114963133	Rename local variable 'eventosArmaPartida'
+1466115313117	Rename local variable 'matou'
+1466115332283	Rename local variable 'armaMaisUsada'
+1466115378570	Rename local variable 'totalDeMatadas'
+1466115578196	Rename local variable 'jogadorCorrente'
+1466115725698	Rename method 'exibirRankingArmas'
+1466118162162	Rename local variable 'nomeJogador'
+1466118865813	Rename method 'carregarDadosPartida'

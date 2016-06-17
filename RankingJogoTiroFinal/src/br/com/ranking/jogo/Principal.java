@@ -1,0 +1,29 @@
+package br.com.ranking.jogo;
+
+import org.junit.Test;
+
+/**
+ * Classe que Executa o problema de montar o Ranking
+ *
+ *
+ * @author Kaiqui Lopes <kaiquilopes@gmail.com.br>
+ * @since 16 de jun de 2016 20:58:03
+ * @version 1.0
+ */
+public class Principal{
+	
+	@Test
+	public void executar() {
+		ControladorPartida controladorPartida = new ControladorPartida();
+		
+		try {
+			/** Passa o caminho do txt para o java */
+			controladorPartida.carregarRanking( "D:/Desenvolvimento/PROJETOS KAIQUI SWING/workspace/RankingJogoTiroFinal/Arquivo.txt" );
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+
+	}
+
+
+}

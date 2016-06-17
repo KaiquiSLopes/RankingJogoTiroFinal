@@ -1,0 +1,42 @@
+package br.com.ranking.util;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+/**
+ * Classe que le um arquivo com as instruções de log do jogo
+ *
+ * @author Kaiqui Lopes <kaiquilopes@gmail.com.br>
+ * @since 14 de jun de 2016 13:48:59
+ * @version 1.0
+ */
+public class Arquivo{
+	
+	// Metodo que le o arquivo.txt
+	public List< String > lerArquivoTxt(String caminho) throws IOException{
+		File file = new File(caminho);
+		ArrayList< String > linhas = new ArrayList<>();
+		String linha = null;
+		
+		if(file.exists()){
+			FileReader fileReader = new FileReader(file);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			while(bufferedReader.ready()){
+				linha = bufferedReader.readLine();
+				linhas.add( linha );
+			}
+			fileReader.close();
+			bufferedReader.close();
+		}else{
+			JOptionPane.showMessageDialog(null, "Arquivo nao encontrado");
+		}
+		return linhas;
+	}
+	
+}

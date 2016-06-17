@@ -1,0 +1,29 @@
+15/06/2016 15:22:42 - New match 2 has started
+15/06/2016 15:23:15 - Roman1 killed Nick1 using M16
+15/06/2016 15:23:21 - Gabriel1 killed Flavio1 using 38
+15/06/2016 15:23:29 - Gabriel1 killed Roman1 using 38
+15/06/2016 15:24:13 - <WORLD> killed Gabriel1 by DROWN
+15/06/2016 15:27:02 - Kaiqui1 killed Marcelo1 using 12
+15/06/2016 15:27:11 - Kaiqui1 killed João1 using 12
+15/06/2016 15:27:18 - Kaiqui1 killed José1 using 12
+15/06/2016 15:27:24 - Kaiqui1 killed Claudio1 using 12
+15/06/2016 15:27:35 - Kaiqui1 killed Marcus1 using 12
+15/06/2016 15:27:39 - Kaiqui1 killed Marcus1 using 38
+15/06/2016 15:27:51 - Marcus1 killed Kaiqui using 38
+15/06/2016 15:39:22 - Match 2 has ended
+14/06/2016 15:22:42 - New match 1 has started
+14/06/2016 15:23:15 - Roman killed Nick using M16
+14/06/2016 15:23:21 - Gabriel killed Flavio using 38
+14/06/2016 15:23:29 - Gabriel killed Roman using 38
+14/06/2016 15:24:13 - <WORLD> killed Gabriel by DROWN
+14/06/2016 15:27:02 - Kaiqui killed Marcelo using 12
+14/06/2016 15:27:11 - Kaiqui killed João using 12
+14/06/2016 15:27:18 - Kaiqui killed José using 12
+14/06/2016 15:27:24 - Kaiqui killed Claudio using 12
+14/06/2016 15:27:35 - Kaiqui killed Marcus using 12
+14/06/2016 15:29:39 - Kaiqui killed Mario using 12
+14/06/2016 15:39:22 - Match 1 has ended
+23/04/2013 15:34:22 - New match 11348965 has started
+23/04/2013 15:36:04 - Roman killed Nick using M16
+23/04/2013 15:36:33 - <WORLD> killed Nick by DROWN
+23/04/2013 15:39:22 - Match 11348965 has ended

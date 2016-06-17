@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package br.com.ranking.jogo;
+
+/**
+ * Classe que representa
+ *
+ *
+ * @author Kaiqui Lopes <kaiquilopes@gmail.com.br>
+ * @since 16 de jun de 2016 17:58:34
+ * @version 1.0
+ */
+public class ControladorPartida{
+
+}

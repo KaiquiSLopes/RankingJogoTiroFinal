@@ -1,0 +1,140 @@
+package br.com.ranking.jogo;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import br.com.ranking.util.Arquivo;
+
+/**
+ * Classe que monta o Ranking do jogo
+ *
+ *
+ * @author Kaiqui Lopes <kaiquilopes@gmail.com.br>
+ * @since 15 de jun de 2016 20:44:40
+ * @version 1.0
+ */
+public class Ranking{
+	
+
+	private HashMap< String, Integer > continuouVivo = new HashMap< String, Integer >();
+	
+
+
+//	public void verificarQuemNaoMorreu(String nomeDeQuemFez){
+//		if ( morreu.get( nomeDeQuemFez ) == null ){
+//			if(!continuouVivo.containsKey( nomeDeQuemFez )){
+//				continuouVivo.get( nomeDeQuemFez );
+//			}else{
+//				continuouVivo.replace( nomeDeQuemFez, 1 );
+//			}
+//		}
+//		System.out.println( nomeDeQuemFez + " não morreu nessa partida" );
+//		continuouVivo.clear();
+//	}
+
+	private HashMap< String, Integer > quantidadeAssassinatosJogador(Partida partida) {
+		HashMap< String, Integer > mapAssassinatos = new HashMap< String, Integer >();
+		for ( Jogador jogadorCorrente : partida.getJogadores() ) {
+			if("<WORLD>".equalsIgnoreCase( jogadorCorrente.getNome() )){
+				continue;
+			}
+			mapAssassinatos.put( jogadorCorrente.getNome(), jogadorCorrente.getAssassinatos().size() );
+		}
+		return mapAssassinatos;
+	}
+	
+	
+
+	private HashMap< String, Integer > quantidadeMortesJogador(Partida partida) {
+		ArrayList< Evento > eventosPartida = new ArrayList<>();
+		for ( Jogador jogadorCorrente : partida.getJogadores() ) {
+			eventosPartida.addAll( jogadorCorrente.getAssassinatos() );
+		}
+		
+		HashMap< String, Integer > mapMortes = new HashMap< String, Integer >();
+		for ( Jogador jogadorCorrente : partida.getJogadores() ) {
+			if("<WORLD>".equalsIgnoreCase( jogadorCorrente.getNome() )){
+				continue;
+			}
+			int contadorVezesMorreu = 0;
+			
+			for ( Evento eventoCorrente : eventosPartida ) {
+				if(jogadorCorrente.getNome().equals( eventoCorrente.getNomeJogadorMorto() )){
+					contadorVezesMorreu++;
+				}
+			}
+			mapMortes.put( jogadorCorrente.getNome(), contadorVezesMorreu );
+		}
+		return mapMortes;
+	}
+	
+	public void exibirRanking(Partida partida){
+		System.out.println( "\nASSASSINATOS" );
+		HashMap< String, Integer > mapAssassinatos = quantidadeAssassinatosJogador(partida);
+		for ( String jogadorCorrente : mapAssassinatos.keySet() ) {
+			System.out.println( jogadorCorrente + " " + mapAssassinatos.get( jogadorCorrente ) );
+		}
+		
+		System.out.println( "\nMORTES" );
+		HashMap< String, Integer > mapMortes = quantidadeMortesJogador(partida);
+		for ( String jogadorCorrente : mapMortes.keySet() ) {
+			System.out.println( jogadorCorrente + " " + mapMortes.get( jogadorCorrente ) );
+		}
+		
+		System.out.println( "\nARMAS" );
+		exibirArmaQueMaisMatou( partida );
+	}
+	
+	private HashMap< String, Integer > pegarArmaQueMaisMatou(Partida partida){
+		HashMap< String, Integer > mapArmasUsadas = new HashMap< String, Integer >();
+		
+		ArrayList< Evento > eventosArmasPartida = new ArrayList<>();
+		for ( Jogador jogadorCorrente : partida.getJogadores() ) {
+			eventosArmasPartida.addAll( jogadorCorrente.getAssassinatos() );
+		}
+		
+		for ( Evento eventoCorrente : eventosArmasPartida ) {
+			if(eventoCorrente.getArma() != null){
+				if ( mapArmasUsadas.containsKey( eventoCorrente.getArma() ) ) {
+					Integer totalDeUso = mapArmasUsadas.get( eventoCorrente.getArma() );
+					mapArmasUsadas.replace( eventoCorrente.getArma(), ++totalDeUso );
+				} else {
+					mapArmasUsadas.put( eventoCorrente.getArma(), 1 );
+				}
+			}
+				
+		}
+		return mapArmasUsadas;
+	}
+	
+	public void exibirArmaQueMaisMatou(Partida partida){
+		HashMap< String, Integer > mapArmas = pegarArmaQueMaisMatou(partida);
+		for ( String armaCorrente : mapArmas.keySet() ) {
+			System.out.println( armaCorrente + " " + mapArmas.get( armaCorrente ) );
+		}
+	}
+	
+	private String pegarVencedor(HashMap< String, Integer > jogadores, Partida partida){
+		String nomeJogador = "";
+		int quantidadeAssassinatos = 0;
+		
+		for ( String nomeJogadorCorrente : jogadores.keySet() ) {
+			if ( nomeJogador.isEmpty() ) {
+				nomeJogador = nomeJogadorCorrente;
+				quantidadeAssassinatos = jogadores.get( nomeJogadorCorrente );
+			} else {
+				int quantidadeCorrente = jogadores.get( nomeJogadorCorrente );
+				if(quantidadeCorrente > quantidadeAssassinatos){
+					nomeJogador = nomeJogadorCorrente;
+					quantidadeAssassinatos = jogadores.get( nomeJogadorCorrente );
+				}
+			}
+		}
+		Jogador jogadorEncontrado = new Jogador();
+		jogadorEncontrado.setNome( nomeJogador );
+		return nomeJogador;
+	}
+
+}

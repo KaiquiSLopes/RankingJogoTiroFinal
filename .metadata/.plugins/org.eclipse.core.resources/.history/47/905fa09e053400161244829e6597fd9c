@@ -1,0 +1,37 @@
+package br.com.ranking.jogo;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+import org.junit.Test;
+
+import br.com.ranking.util.Arquivo;
+
+public class Principal{
+	
+	@Test
+	public void executar() {
+		ControladorPartida controladorPartida = new ControladorPartida();
+
+		try {
+
+			ArrayList< String > linhasArquivo = controladorPartida.carregarArquivoLog( "D:/Desenvolvimento/PROJETOS KAIQUI SWING/workspace/RankingJogoTiroFinal/Arquivo.txt" );
+
+			//		pegar uma partida para cada new que eu achar no doc
+			ArrayList< Partida > partidas = controladorPartida.carregarDadosPartida( linhasArquivo );
+
+			for ( Partida partida : partidas ) {
+				System.out.println( partida );
+			}
+
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+
+	}
+
+
+}

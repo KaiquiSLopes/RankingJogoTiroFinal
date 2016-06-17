@@ -1,0 +1,43 @@
+package br.com.ranking.jogo;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+import org.junit.Test;
+
+import br.com.ranking.util.Arquivo;
+
+public class Principal{
+	
+	public static final int NUMERO_PARTIDA = 2;
+	public static final int NOME_QUEM_FEZ = 0;
+	public static final int ACAO_KILLED = 1;
+	public static final int NOME_VITIMA = 2;
+	public static final int USANDO_OU_CAUSA = 3;
+	public static final int ARMA_OU_CAUSA = 4;
+
+	@Test
+	public void executar() {
+
+		try {
+
+			ArrayList< String > linhasArquivo = carregarArquivoLog( "D:/Desenvolvimento/PROJETOS KAIQUI SWING/workspace/RankingJogoTiroFinal/Arquivo.txt" );
+
+			//		pegar uma partida para cada new que eu achar no doc
+			ArrayList< Partida > partidas = carregarDadosPartida( linhasArquivo );
+
+			for ( Partida partida : partidas ) {
+				System.out.println( partida );
+			}
+
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+
+	}
+
+
+}

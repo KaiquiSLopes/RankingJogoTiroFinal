@@ -1,0 +1,15 @@
+1465922929242	Delete element
+1465924141474	Delete element
+1465934808906	Rename local variable 'linhaQuedrada'
+1465945735594	Rename local variable 'totalDeMortes'
+1465949264795	Extract method 'quemMorreu'
+1465949299228	Extract method 'quemMatou'
+1465949783161	Extract method 'quebrarPalabrasDasLinhas'
+1465953627976	Rename method 'quebrarPalabrasDasLinhas'
+1466014876623	Rename package 'br.com.ranking.util'
+1466014893060	Rename package 'br.com.ranking.util'
+1466015566075	Copy compilation unit
+1466018732430	Move compilation unit
+1466032339891	Delete element
+1466034176405	Copy compilation unit
+1466034198386	Copy compilation unit
